@@ -23,6 +23,39 @@
 
 <body>
 
+    <h1 class="text-center">INDOVINA SE LA SOMMA E' PARI O DISPARI</h1>
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-6 text-center">
+                <h2>UTENTE:</h2>
+                <label for="input_select" class="d-block">Scegli Pari o Dispari</label>
+                <select name="select" id="input_select">
+                    <option value="pari">PARI</option>
+                    <option value="dispari">DISPARI</option>
+                </select>
+                <label for="input_number" class="d-block mt-3">Inserisci un numero da 1 a 5</label>
+                <input type="number" name="" id="input_number" min="1" max="5">
+            </div>
+
+            <div class="col-6 text-center">
+                <h2>PC:</h2>
+                <p id="pc_number"></p>
+            </div>
+
+            <div class="col-auto">
+                <button type="button" id="calculation_button" class="my-3">CALCOLA LA SOMMA</button>
+            </div>
+
+            <div class="col-12 text-center">
+                <p id="sum_generated"></p>
+                <p id="output_message"></p>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 
 </html>

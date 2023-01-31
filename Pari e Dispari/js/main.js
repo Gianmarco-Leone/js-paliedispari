@@ -6,41 +6,79 @@
 // Dichiariamo chi ha vinto.
 
 // SVOLGIMENTO:
+const calculationButton = document.getElementById("calculation_button");
 
-// Utente sceglie pari o dispari
-const userChoice = prompt("Scegli pari o dispari");
-console.log(userChoice);
+calculationButton.addEventListener(
+    "click",
+    function () {
 
-let userBool;
-if (userChoice === "pari") {
-    userBool = true;
-} else if (userChoice === "dispari") {
-    userBool = false;
-}
-console.log(userBool);
+        /***************
+        STEP 1
+        **************/
+        // Utente sceglie pari o dispari
+        const userChoiceInput = document.getElementById("input_select");
+        // const userChoice = prompt("Scegli pari o dispari");
+        const userChoice = userChoiceInput.value;
+        console.log(userChoice);
 
-// Utente inserisce numero da 1 a 5
-const userNumber = parseInt(prompt("Scegli un numero da 1 a 5"));
-console.log(userNumber);
+        let userBool;
+        if (userChoice === "pari") {
+            userBool = true;
+        } else if (userChoice === "dispari") {
+            userBool = false;
+        }
+        console.log(userBool);
 
-// Generiamo numero random da 1 a 5 per PC (con una function)
-let pcRandomNumber = generateRandomNumber(1, 5);
-console.log(pcRandomNumber);
+        /***************
+         STEP 2
+        **************/
+        // Utente inserisce numero da 1 a 5
+        const userInputNumber = document.getElementById("input_number");
+        // const userNumber = parseInt(prompt("Scegli un numero da 1 a 5"));
+        const userNumber = userInputNumber.value;
+        console.log(userNumber);
 
-// Sommiamo numero utente e numero PC
-let sumNumber = sum(userNumber, pcRandomNumber);
-console.log(sumNumber);
+        /***************
+         STEP 3
+        **************/
+        // Generiamo numero random da 1 a 5 per PC (con una function)
+        const pcNumber = document.getElementById("pc_number");
+        let pcRandomNumber = generateRandomNumber(1, 5);
+        pcNumber.innerHTML = pcRandomNumber;
+        console.log(pcRandomNumber);
 
-// Stabiliamo se somma è pari o dispari
-let comparisonResult = isEven(sumNumber);
-console.log(comparisonResult);
+        /***************
+         STEP 4
+        **************/
+        // Sommiamo numero utente e numero PC
+        const sumGeneratedEl = document.getElementById("sum_generated");
+        let sumNumber = sum(userNumber, pcRandomNumber);
+        sumGeneratedEl.innerHTML = "La somma tra i due numeri è " + sumNumber;
+        // console.log(sumNumber);
 
-// Stabilisco se l'utente inizialmente ha indovinato o no
-if (userBool == comparisonResult) {
-    console.log("Hai indovinato");
-} else {
-    console.log("Non hai indovinato");
-}
+        /***************
+         STEP 5
+        **************/
+        // Stabiliamo se somma è pari o dispari
+        let comparisonResult = isEven(sumNumber);
+        console.log(comparisonResult);
+
+        /***************
+         STEP 6
+        **************/
+        const messageTextEl = document.getElementById("output_message");
+        let outputMessage;
+        // Stabilisco se l'utente inizialmente ha indovinato o no
+        if (userBool == comparisonResult) {
+            outputMessage = "Hai indovinato";
+            // console.log("Hai indovinato");
+        } else {
+            outputMessage = "Non hai indovinato";
+            // console.log("Non hai indovinato");
+        }
+        messageTextEl.innerHTML = outputMessage;
+    }
+);
 
 
 
@@ -48,8 +86,9 @@ if (userBool == comparisonResult) {
 
 
 
-
-
+/***************
+ FUNCTIONS
+ **************/
 function generateRandomNumber(minimo, massimo) {
     let randomNumber = Math.floor(Math.random() * (massimo - minimo + 1)) + minimo;
     return randomNumber;
