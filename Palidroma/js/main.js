@@ -5,11 +5,6 @@
 // SVOLGIMENTO:
 const generateButton = document.getElementById("generate_button");
 
-
-// Chiedi parola
-// const userWord = prompt("Inserisci una parola");
-
-
 generateButton.addEventListener(
     "click",
     function () {
@@ -20,27 +15,19 @@ generateButton.addEventListener(
         // Invoca funzione
         let reverseUserWord = reverseWords(userWord);
 
-        // // Stampa parola inversa
-        console.log(reverseUserWord);
-
         if (reverseUserWord == userWord) {
-            console.log("La parola è palindroma");
-            outputMessage = ("La parola " + userWord + " è palindroma");
+            outputMessage = ("La parola '" + userWord + "' è palindroma");
         } else {
-            console.log("La parola non è pallindroma");
-            outputMessage = ("La parola " + userWord + " non è pallindroma");
+            outputMessage = ("La parola '" + userWord + "' non è pallindroma");
         }
         textEl.innerHTML = outputMessage;
     }
 );
 
 
-
-
-
-
-
-// Creo function che inverte le parole
+/***********
+ FUNCTIONS
+ **********/
 function reverseWords(string) {
     let reverseWord = "";
     let i = string.length - 1;
