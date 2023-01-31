@@ -11,6 +11,14 @@
 const userChoice = prompt("Scegli pari o dispari");
 console.log(userChoice);
 
+let userBool;
+if (userChoice === "pari") {
+    userBool = true;
+} else if (userChoice === "dispari") {
+    userBool = false;
+}
+console.log(userBool);
+
 // Utente inserisce numero da 1 a 5
 const userNumber = parseInt(prompt("Scegli un numero da 1 a 5"));
 console.log(userNumber);
@@ -22,9 +30,21 @@ console.log(pcRandomNumber);
 // Sommiamo numero utente e numero PC
 let sumNumber = sum(userNumber, pcRandomNumber);
 console.log(sumNumber);
+
 // Stabiliamo se somma è pari o dispari
-// SE scelta utente == risultato di prima vince utente
-// ELSE vince PC
+let comparisonResult = isEven(sumNumber);
+console.log(comparisonResult);
+
+// Stabilisco se l'utente inizialmente ha indovinato o no
+if (userBool == comparisonResult) {
+    console.log("Hai indovinato");
+} else {
+    console.log("Non hai indovinato");
+}
+
+
+
+
 
 
 
@@ -35,7 +55,6 @@ function generateRandomNumber(minimo, massimo) {
     return randomNumber;
 }
 
-
 function sum(num1, num2) {
     num1 = parseInt(num1);
     num2 = parseInt(num2);
@@ -45,4 +64,11 @@ function sum(num1, num2) {
         return false;
     }
     return risultato;
+}
+
+function isEven(num) {
+    if (num % 2 == 0) {
+        return true;
+    }
+    return false;
 }
